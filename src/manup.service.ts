@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { AppVersion } from '@ionic-native/app-version/ngx';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { AlertController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { map } from 'rxjs/operators';
@@ -75,7 +74,6 @@ export class ManUpService {
     private http: HttpClient,
     private alert: AlertController,
     private platform: Platform,
-    private iab: InAppBrowser,
     private AppVersion: AppVersion,
     @Optional()
     @Inject(TRANSLATE_SERVICE)
@@ -343,7 +341,7 @@ export class ManUpService {
             {
               text: useTranslate ? this.translate.instant('manup.buttons.update') : 'Update',
               handler: () => {
-                this.iab.create(platformData.url, '_system');
+                window.open(platformData.url, '_system');
                 return false;
               },
             },
@@ -382,7 +380,7 @@ export class ManUpService {
             {
               text: this.translate ? this.translate.instant('manup.buttons.update') : 'Update',
               handler: () => {
-                this.iab.create(platformData.url, '_system');
+                window.open(platformData.url, '_system');
                 return false;
               },
             },
