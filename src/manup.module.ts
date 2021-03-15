@@ -9,7 +9,7 @@ import { ManUpService } from './manup.service';
 })
 export class ManUpModule {
 
-    static forRoot(config: ManUpConfig): ModuleWithProviders {
+    static forRoot(config: ManUpConfig): ModuleWithProviders<any> {
 
         return {
             ngModule: ManUpModule,
