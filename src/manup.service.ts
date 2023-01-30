@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
-import { AppVersion } from '@ionic-native/app-version/ngx';
 import { AlertController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { map } from 'rxjs/operators';
 import * as semver from 'semver';
 import { i18n } from './i18n';
 import { ManUpConfig } from './manup.config';
+import {AppVersion} from "@awesome-cordova-plugins/app-version/ngx";
 
 /**
  * DI InjectionToken for optional ngx-translate
@@ -135,7 +135,7 @@ export class ManUpService {
             const metadata = await this.metadata();
             // Be generous, if we couldn't get the ManUp data let the app run
             if (!metadata) {
-              return resolve();
+              return resolve(null);
             }
             try {
               const platformData = await this.getPlatformData(metadata);
